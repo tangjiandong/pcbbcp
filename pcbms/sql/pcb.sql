@@ -8,7 +8,7 @@ Source Database       : pcb
 
 Target Server Type    : MYSQL
 Target Server Version : 50045
-File Encoding         : 65001
+File Encoding         : 65001 说明版本
 
 Date: 2013-12-27 17:47:10
 */
