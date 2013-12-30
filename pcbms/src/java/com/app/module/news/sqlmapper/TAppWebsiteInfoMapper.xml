@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TAppWebsiteInfo">
+	<!-- 添加新闻采集规则 -->
+	<insert id="insertTAppWebsiteInfoByModel" parameterType="TAppWebsiteInfo"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into t_app_website_info
+		(summary,webname,link,plink,timeline,userid,phref,content,author,addtime,username,title,source,forwardlink)
+		values
+		(#{summary},#{webname},#{link},#{plink},#{timeline},#{userid},#{phref},#{content},#{author},#{addtime},#{username},#{title},#{source},#{forwardlink})
+	</insert>
+
+	<!-- 修改新闻采集规则 -->
+	<update id="updateTAppWebsiteInfoByModel" parameterType="TAppWebsiteInfo">
+		update t_app_website_info
+		<trim prefix="set" suffixOverrides=",">
+			<if test="summary != null">
+				summary=#{summary},
+			</if>
+			<if test="webname != null">
+				webname=#{webname},
+			</if>
+			<if test="link != null">
+				link=#{link},
+			</if>
+			<if test="plink != null">
+				plink=#{plink},
+			</if>
+			<if test="timeline != null">
+				timeline=#{timeline},
+			</if>
+			<if test="userid != null">
+				userid=#{userid},
+			</if>
+			<if test="phref != null">
+				phref=#{phref},
+			</if>
+			<if test="content != null">
+				content=#{content},
+			</if>
+			<if test="author != null">
+				author=#{author},
+			</if>
+			<if test="addtime != null">
+				addtime=#{addtime},
+			</if>
+			<if test="username != null">
+				username=#{username},
+			</if>
+			<if test="title != null">
+				title=#{title},
+			</if>
+			<if test="source != null">
+				source=#{source},
+			</if>
+			<if test="forwardlink != null">
+				forwardlink=#{forwardlink},
+			</if>
+
+		</trim>
+		where 1=1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+	</update>
+
+	<!-- 查询新闻采集规则 -->
+	<select id="selectTAppWebsiteInfoByModel" parameterType="TAppWebsiteInfo"
+		resultType="TAppWebsiteInfo">
+		select * from t_app_website_info where 1=1
+		<if test="summary != null">
+			and summary=#{summary}
+		</if>
+		<if test="webname != null">
+			and webname=#{webname}
+		</if>
+		<if test="link != null">
+			and link=#{link}
+		</if>
+		<if test="plink != null">
+			and plink=#{plink}
+		</if>
+		<if test="timeline != null">
+			and timeline=#{timeline}
+		</if>
+		<if test="userid != null">
+			and userid=#{userid}
+		</if>
+		<if test="phref != null">
+			and phref=#{phref}
+		</if>
+		<if test="content != null">
+			and content=#{content}
+		</if>
+		<if test="author != null">
+			and author=#{author}
+		</if>
+		<if test="addtime != null">
+			and addtime=#{addtime}
+		</if>
+		<if test="username != null">
+			and username=#{username}
+		</if>
+		<if test="title != null">
+			and title=#{title}
+		</if>
+		<if test="source != null">
+			and source=#{source}
+		</if>
+		<if test="forwardlink != null">
+			and forwardlink=#{forwardlink}
+		</if>
+        <if test="id != null">
+			and id = #{id}
+		</if>
+	</select>
+
+	<!-- 删除新闻采集规则 -->
+	<delete id="deleteTAppWebsiteInfoByModel" parameterType="TAppWebsiteInfo">
+		delete from t_app_website_info where 1=1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+	</delete>
+
+
+<!-- 查询新闻采集规则 -->
+	<select id="selectTAppWebsiteInfoByModel_list_page" parameterType="TAppWebsiteInfo"
+		resultType="TAppWebsiteInfo">
+		select * from t_app_website_info where 1=1
+		
+	</select>
+
+<!-- 查询新闻采集规则 -->
+	<select id="selectTAppWebsiteInfoByModel_list_page_count" parameterType="TAppWebsiteInfo"
+		resultType="Integer">
+		select count(*) from t_app_website_info where 1=1
+		<if test="summary != null">
+			and summary=#{summary}
+		</if>
+		<if test="webname != null">
+			and webname=#{webname}
+		</if>
+		<if test="link != null">
+			and link=#{link}
+		</if>
+		<if test="plink != null">
+			and plink=#{plink}
+		</if>
+		<if test="timeline != null">
+			and timeline=#{timeline}
+		</if>
+		<if test="userid != null">
+			and userid=#{userid}
+		</if>
+		<if test="phref != null">
+			and phref=#{phref}
+		</if>
+		<if test="content != null">
+			and content=#{content}
+		</if>
+		<if test="author != null">
+			and author=#{author}
+		</if>
+		<if test="addtime != null">
+			and addtime=#{addtime}
+		</if>
+		<if test="username != null">
+			and username=#{username}
+		</if>
+		<if test="title != null">
+			and title=#{title}
+		</if>
+		<if test="source != null">
+			and source=#{source}
+		</if>
+		<if test="forwardlink != null">
+			and forwardlink=#{forwardlink}
+		</if>
+
+	</select>
+
+</mapper>

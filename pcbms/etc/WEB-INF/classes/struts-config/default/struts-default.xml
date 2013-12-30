@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 需要经过用户登录跳转拦截器 -->
+	<package name="defaultpackage" extends="app-interceptors">
+		<!-- 网站首页 -->						 
+		<action name="default" class="com.app.transaction.DefaultAction" method="gotoHome">
+			<result name="home">/webpages/index.jsp</result>
+		</action>
+	</package>
+	
+	
+	<!-- 不需要经过用户登录跳转拦截器 -->
+	<package name="defaulnottpackage" namespace="/" extends="app-interceptors-not">
+		<!-- demo -->
+		<action name="demo" class="com.app.transaction.demo.DemoAction">
+			<result name="upload">/webpages/demo/upload.jsp</result>
+		</action>
+	</package>
+	
+	
+	
+</struts>

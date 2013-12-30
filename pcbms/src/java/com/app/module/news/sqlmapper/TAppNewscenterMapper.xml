@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TAppNewscenter">
+	<!-- 添加新闻中心 -->
+	<insert id="insertTAppNewscenterByModel" parameterType="TAppNewscenter"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into t_app_newscenter
+		(content,summary,author,addtime,username,title,isrelease,userid,timeline,comefrom,oldhref)
+		values
+		(#{content},#{summary},#{author},#{addtime},#{username},#{title},#{isrelease},#{userid},#{timeline},#{comefrom},#{oldhref})
+	</insert>
+
+	<!-- 修改新闻中心 -->
+	<update id="updateTAppNewscenterByModel" parameterType="TAppNewscenter">
+		update t_app_newscenter
+		<trim prefix="set" suffixOverrides=",">
+			<if test="content != null">
+				content=#{content},
+			</if>
+				<if test="oldhref != null">
+				oldhref=#{oldhref},
+			</if>
+			<if test="summary != null">
+				summary=#{summary},
+			</if>
+			<if test="author != null">
+				author=#{author},
+			</if>
+			<if test="addtime != null">
+				addtime=#{addtime},
+			</if>
+			<if test="username != null">
+				username=#{username},
+			</if>
+			<if test="title != null">
+				title=#{title},
+			</if>
+			<if test="isrelease != null">
+				isrelease=#{isrelease},
+			</if>
+			<if test="userid != null">
+				userid=#{userid},
+			</if>
+			<if test="timeline != null">
+				timeline=#{timeline},
+			</if>
+			<if test="comefrom != null">
+				comefrom=#{comefrom},
+			</if>
+
+		</trim>
+		where 1=1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+	</update>
+
+	<!-- 查询新闻中心 -->
+	<select id="selectTAppNewscenterByModel" parameterType="TAppNewscenter"
+		resultType="TAppNewscenter">
+		select * from t_app_newscenter where 1=1
+		<if test="content != null">
+			and content=#{content}
+		</if>
+		<if test="summary != null">
+			and summary=#{summary}
+		</if>
+		<if test="author != null">
+			and author=#{author}
+		</if>
+		<if test="addtime != null">
+			and addtime=#{addtime}
+		</if>
+		<if test="username != null">
+			and username=#{username}
+		</if>
+		<if test="title != null">
+			and title=#{title}
+		</if>
+		<if test="isrelease != null">
+			and isrelease=#{isrelease}
+		</if>
+		<if test="userid != null">
+			and userid=#{userid}
+		</if>
+		<if test="timeline != null">
+			and timeline=#{timeline}
+		</if>
+		<if test="comefrom != null">
+			and comefrom=#{comefrom}
+		</if>
+        <if test="id != null">
+			and id = #{id}
+		</if>
+	</select>
+
+	<!-- 删除新闻中心 -->
+	<delete id="deleteTAppNewscenterByModel" parameterType="TAppNewscenter">
+		delete from t_app_newscenter where 1=1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+	</delete>
+	
+	
+	<!-- 查询新闻中心 分页-->
+	<select id="selectTAppNewscenter_list_page" parameterType="TAppNewscenter"
+		resultType="TAppNewscenter">
+		select * from t_app_newscenter where 1=1
+		<if test="content != null">
+			and content=#{content}
+		</if>
+		<if test="summary != null">
+			and summary=#{summary}
+		</if>
+		<if test="author != null">
+			and author=#{author}
+		</if>
+		<if test="addtime != null">
+			and addtime=#{addtime}
+		</if>
+		<if test="username != null">
+			and username=#{username}
+		</if>
+		<if test="title != null">
+			and title=#{title}
+		</if>
+		<if test="isrelease != null">
+			and isrelease=#{isrelease}
+		</if>
+		<if test="userid != null">
+			and userid=#{userid}
+		</if>
+		<if test="timeline != null">
+			and timeline=#{timeline}
+		</if>
+		<if test="comefrom != null">
+			and comefrom=#{comefrom}
+		</if>
+
+	</select>
+	
+		<!-- 查询新闻中心 分页-->
+	<select id="selectTAppNewscenter_list_page_count" parameterType="TAppNewscenter"
+		resultType="Integer">
+		select count(*) from t_app_newscenter where 1=1
+		<if test="content != null">
+			and content=#{content}
+		</if>
+		<if test="summary != null">
+			and summary=#{summary}
+		</if>
+		<if test="author != null">
+			and author=#{author}
+		</if>
+		<if test="addtime != null">
+			and addtime=#{addtime}
+		</if>
+		<if test="username != null">
+			and username=#{username}
+		</if>
+		<if test="title != null">
+			and title=#{title}
+		</if>
+		<if test="isrelease != null">
+			and isrelease=#{isrelease}
+		</if>
+		<if test="userid != null">
+			and userid=#{userid}
+		</if>
+		<if test="timeline != null">
+			and timeline=#{timeline}
+		</if>
+		<if test="comefrom != null">
+			and comefrom=#{comefrom}
+		</if>
+
+	</select>
+	
+</mapper>
+

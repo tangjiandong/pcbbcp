@@ -1,0 +1,38 @@
+﻿@charset "utf-8";
+/*弹出层*/
+#AContent {
+	width: auto;
+	height: auto;
+	background-color: #fff;
+	border: 6px #999 solid;
+	padding: 1px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 300;
+	background-color: #fff;
+}
+
+#AScreen {
+	background-color: #666;
+	position: absolute;
+	z-index: 200;
+	left: 0;
+	top: 0;
+	display: none;
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	filter: alpha(opacity =   50);
+	-moz-opacity: 0.5;
+}
+
+.AClose {
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	z-index: 99999;
+	color: #666;
+	font-weight: bold;
+}

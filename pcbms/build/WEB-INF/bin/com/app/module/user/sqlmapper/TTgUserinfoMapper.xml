@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TTgUserinfo">
+	<!-- 查询用户信息 -->
+	<select id="selectTTgUserinfoByModel" parameterType="TTgUserinfo"
+		resultType="TTgUserinfo">
+		select * from t_tg_userinfo where 1 = 1
+		<if test="userid != null">
+			and userid = #{userid} 
+		</if>
+		<if test="username != null">
+			and username = #{username} 
+		</if>
+		<if test="utype != null">
+			and utype = #{utype} 
+		</if>
+		<if test="isvalid != null">
+			and isvalid = #{isvalid} 
+		</if>
+		<if test="roleid != null">
+		 and  exists ( select 1 from t_tg_sys_roleuser_rel  where t_tg_sys_roleuser_rel.userid=t_tg_userinfo.userid and t_tg_sys_roleuser_rel.roleid=#{roleid} )
+		</if>
+	</select>
+
+	<!-- 新增用户信息 -->
+	<insert id="insertTTgUserinfoByModel" parameterType="TTgUserinfo"
+		useGeneratedKeys="true" keyProperty="userid">
+		insert into t_tg_userinfo (username,realname,password,utype,uphone,remark,isvalid,regclsdate,optuserid,optusername,optdate)
+		values (#{username},#{realname},#{password},#{utype},#{uphone},#{remark},#{isvalid},#{regclsdate},#{optuserid},#{optusername},#{optdate})
+	</insert>
+
+	<!-- 修改用户信息 -->
+	<update id="updateTTgUserinfoByModel" parameterType="TTgUserinfo">
+		update t_tg_userinfo
+		<trim prefix="set" suffixOverrides=",">
+			<if test="username != null">
+				username = #{username}, 
+			</if>
+			<if test="realname != null">
+				realname = #{realname}, 
+			</if>
+			<if test="password != null">
+				password = #{password}, 
+			</if>
+			<if test="utype != null">
+				utype = #{utype}, 
+			</if>
+			<if test="uphone != null">
+				uphone = #{uphone}, 
+			</if>
+			<if test="remark != null">
+				remark = #{remark}, 
+			</if>
+			<if test="isvalid != null">
+				isvalid = #{isvalid}, 
+			</if>
+			<if test="regclsdate != null">
+				regclsdate = #{regclsdate}, 
+			</if>
+			<if test="optuserid != null">
+				optuserid = #{optuserid}, 
+			</if>
+			<if test="optusername != null">
+				optusername = #{optusername}, 
+			</if>
+			<if test="optdate != null">
+				optdate = #{optdate}, 
+			</if>
+		</trim>
+		where 1 = 1
+		<if test="userid != null">
+			and userid = #{userid} 
+		</if>
+		<if test="username != null">
+			and username = #{username} 
+		</if>
+	</update>
+
+	<!-- 删除用户信息 -->
+	<delete id="deleteTTgUserinfoByModel" parameterType="TTgUserinfo">
+		delete from t_tg_userinfo
+		where 1 = 1
+		<if test="userid != null">
+			and userid = #{userid} 
+		</if>
+		<if test="username != null">
+			and username = #{username} 
+		</if>
+	</delete>
+	
+	<!-- 查询用户信息分页列表 -->
+	<select id="selectTTgUserinfo_list_page" parameterType="TTgUserinfo" resultType="java.util.HashMap">
+		select * from t_tg_userinfo 
+		where 1 = 1 
+		order by regclsdate desc 
+		limit #{start},#{end}
+	</select>
+	
+	<select id="selectTTgUserinfo_list_page_count" parameterType="TTgUserinfo" resultType="Integer">
+		select count(*) from t_tg_userinfo 
+		where 1 = 1 
+	</select>
+	
+	
+	
+</mapper>

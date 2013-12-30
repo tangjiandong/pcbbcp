@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<!-- 需要经过用户登录跳转拦截器 -->
+	<package name="newpackage" namespace="/" extends="app-interceptors">
+		<!-- 采集模板 -->
+		<action name="website" class="com.app.transaction.news.action.WebSiteInfoAction">
+			<result name="add">/webpages/news/websiteAdd.jsp</result>
+			<result name="update">/webpages/news/websiteUpdate.jsp</result>
+			<result name="list">/webpages/news/websiteList.jsp</result>
+		</action>
+		<action name="news" class="com.app.transaction.news.action.NewsCenterAction">
+			<result name="list">/webpages/news/newsCenterList.jsp</result>
+			<result name="view">/webpages/news/newsCenterView.jsp</result>
+		</action>
+	</package>
+</struts>

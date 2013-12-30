@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TTgChannelInfo">
+	<!-- 添加渠道信息表 -->
+	<insert id="insertTTgChannelInfoByModel" parameterType="TTgChannelInfo"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into t_tg_channel_info
+		(chlcomname,chlname,chlamount,joindate,chltype,chldesc,chltel,chlstauts,chlprikey,chlmobile,chlemail,chlkey)
+		values
+		(#{chlcomname},#{chlname},#{chlamount},#{joindate},#{chltype},#{chldesc},#{chltel},#{chlstauts},#{chlprikey},#{chlmobile},#{chlemail},#{chlkey})
+	</insert>
+
+	<!-- 修改渠道信息表 -->
+	<update id="updateTTgChannelInfoByModel" parameterType="TTgChannelInfo">
+		update t_tg_channel_info
+		<trim prefix="set" suffixOverrides=",">
+			<if test="chlcomname != null and chlcomname!=''">
+				chlcomname=#{chlcomname},
+			</if>
+			<if test="chlname != null and chlname!=''">
+				chlname=#{chlname},
+			</if>
+			<if test="chlamount != null and chlamount!=''">
+				chlamount=#{chlamount},
+			</if>
+			<if test="joindate != null and joindate!=''">
+				joindate=#{joindate},
+			</if>
+			<if test="chltype != null and chltype!=''">
+				chltype=#{chltype},
+			</if>
+			<if test="chldesc != null and chldesc!=''">
+				chldesc=#{chldesc},
+			</if>
+			<if test="chltel != null and chltel!=''">
+				chltel=#{chltel},
+			</if>
+			<if test="chlstauts != null and chlstauts!=''">
+				chlstauts=#{chlstauts},
+			</if>
+			<if test="chlprikey != null and chlprikey!=''">
+				chlprikey=#{chlprikey},
+			</if>
+			<if test="chlmobile != null and chlmobile!=''">
+				chlmobile=#{chlmobile},
+			</if>
+			<if test="chlemail != null and chlemail!=''">
+				chlemail=#{chlemail},
+			</if>
+			<if test="chlkey != null and chlkey!=''">
+				chlkey=#{chlkey},
+			</if>
+
+		</trim>
+		where 1=1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+	</update>
+
+	<select id="findTTgChannelInfoByModel" parameterType="TTgChannelInfo"
+		resultType="TTgChannelInfo">
+		select * from t_tg_channel_info where 1=1
+		<if test="id">
+			and id=#{id}
+		</if>
+	</select>
+
+	<!-- 查询渠道信息表 -->
+	<select id="selectTTgChannelInfoByModel" parameterType="TTgChannelInfo"
+		resultType="TTgChannelInfo">
+		select * from t_tg_channel_info where 1=1
+		<if test="chlcomname != null and chlcomname!=''">
+			and chlcomname like CONCAT('%',#{chlcomname},'%') 
+			
+		</if>
+		<if test="chlname != null and chlname!=''">
+			and chlname like CONCAT('%',#{chlname},'%') 
+		</if>
+		<if test="chlamount != null">
+			and chlamount=#{chlamount}
+		</if>
+		<if test="joindate != null">
+			and joindate=#{joindate}
+		</if>
+		<if test="chltype != null and chltype!=''">
+			and chltype=#{chltype}
+		</if>
+		<if test="chldesc != null">
+			and chldesc=#{chldesc}
+		</if>
+		<if test="chltel != null">
+			and chltel=#{chltel}
+		</if>
+		<if test="chlstauts != null and chlstauts!=''">
+			and chlstauts=#{chlstauts}
+		</if>
+		<if test="chlprikey != null">
+			and chlprikey=#{chlprikey}
+		</if>
+		<if test="chlmobile != null">
+			and chlmobile=#{chlmobile}
+		</if>
+		<if test="chlemail != null">
+			and chlemail=#{chlemail}
+		</if>
+		<if test="chlkey != null">
+			and chlkey=#{chlkey}
+		</if>
+		order by joindate desc
+		LIMIT #{start},#{end}
+	</select>
+
+	<select id="selectTTgChannelInfoByModel_count" parameterType="TTgChannelInfo"
+		resultType="Integer">
+		select count(*) from t_tg_channel_info where 1=1
+		<if test="chlcomname != null and chlcomname!=''">
+			and chlcomname like CONCAT('%',#{chlcomname},'%') 
+		</if>
+		<if test="chlname != null and chlname!=''">
+			and chlname like CONCAT('%',#{chlname},'%') 
+		</if>
+		<if test="chlamount != null">
+			and chlamount=#{chlamount}
+		</if>
+		<if test="joindate != null">
+			and joindate=#{joindate}
+		</if>
+		<if test="chltype != null and chltype!=''">
+			and chltype=#{chltype}
+		</if>
+		<if test="chldesc != null">
+			and chldesc=#{chldesc}
+		</if>
+		<if test="chltel != null">
+			and chltel=#{chltel}
+		</if>
+		<if test="chlstauts != null and chlstauts!=''">
+			and chlstauts=#{chlstauts}
+		</if>
+		<if test="chlprikey != null">
+			and chlprikey=#{chlprikey}
+		</if>
+		<if test="chlmobile != null">
+			and chlmobile=#{chlmobile}
+		</if>
+		<if test="chlemail != null">
+			and chlemail=#{chlemail}
+		</if>
+		<if test="chlkey != null">
+			and chlkey=#{chlkey}
+		</if>
+		order by joindate desc
+	</select>
+	<!-- 查询商户开通那些渠道信息表 -->
+	<select id="selectShopChannelInfoByModel" parameterType="TTgChannelInfo"
+		resultType="TTgChannelInfo">
+		select channel.*,schel.setstatus,schel.shopid from t_tg_channel_info
+		channel
+		left join
+		(select chlid,chlname,setstatus,shopid from
+		t_sh_bg_channelset_record where 1=1
+
+		<if test="spidlist !=null">
+			and shopid in
+			<foreach item="item" index="index" collection="spidlist"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+
+		) schel
+		on channel.id=schel.chlid
+		where 1=1
+		<if test="chlstauts != null">
+			and channel.chlstauts=#{chlstauts}
+		</if>
+		order by channel.joindate desc
+		<if test="num != null">
+			limit 0,#{num}
+		</if>
+	</select>
+
+	<!-- 删除渠道信息表 -->
+	<delete id="deleteTTgChannelInfoByModel" parameterType="TTgChannelInfo">
+		delete from t_tg_channel_info where 1=1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+	</delete>
+
+</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 不需要经过用户登录跳转拦截器 -->
+	<package name="usernotpackage" namespace="/" extends="app-interceptors-not">
+		<!-- 用户登录 -->
+		<action name="login" class="com.app.transaction.user.action.LoginAction">
+			<result name="index">/webpages/user/login.jsp</result>
+			<result name="alert">/votepages/loginAlert.jsp</result>
+		</action>
+		<!-- 渠道用户登录 -->
+		<action name="qdlogin" class="com.app.transaction.qd.action.LoginAction">
+			<result name="index">/webpages/qd/login.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 需要经过用户登录跳转拦截器 -->
+	<package name="userpackage" namespace="/" extends="app-interceptors">
+		<!-- 用户信息 -->
+		<action name="user" class="com.app.transaction.user.action.UserAction">
+			<result name="list">/webpages/user/list.jsp</result>
+			<result name="uimglist">/webpages/user/uimglist.jsp</result>
+			<result name="create">/webpages/user/create.jsp</result>
+			<result name="edit">/webpages/user/edit.jsp</result>
+			<result name="info">/webpages/user/info.jsp</result>
+			<result name="pwd">/webpages/user/pwd.jsp</result>
+			<result name="role">/webpages/user/role.jsp</result>
+		</action>
+	</package>
+	
+
+</struts>

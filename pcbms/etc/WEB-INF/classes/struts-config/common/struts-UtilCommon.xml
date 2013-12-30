@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="utilpackage" namespace="/" extends="app-interceptors-not">
+	
+	 <action name="fileUpload" class="com.app.transaction.common.action.FileUploadAction" method="uploadFile">
+		</action>
+		
+		<!-- 图片上传 -->
+		<action name="uploadImage" class="com.app.transaction.common.action.ImageUploadAction" method="uploadImage">
+		</action>
+		<!-- 编译器图片上传 -->
+		<action name="kissyUploadImage" class="com.app.transaction.common.action.ImageUploadAction" method="kissyUploadImage">
+		</action>
+		
+		<!--图片上传(按图片路径) -->
+		<action name="uploadImageFromPath" class="com.app.transaction.common.action.ImageUploadAction" method="uploadImageFromPath">
+		</action>
+		<!-- 文件删除 -->
+		<action name="upload" class="com.app.transaction.common.action.UploadCommonAction" >
+		</action>
+		<action name="newUpload" class="com.app.transaction.common.action.NewUploadAction" >
+		</action>
+		
+		
+	</package>
+</struts>

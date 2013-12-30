@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TWxSysCityinfo">
+	<!-- 查询全国省份城市区县信息 -->
+	<select id="selectTWxSysCityinfoByModel" parameterType="TWxSysCityinfo"
+		resultType="TWxSysCityinfo">
+		select * from t_wx_sys_cityinfo where 1 = 1
+		<if test="id != null">
+			and id = #{id} 
+		</if>
+		<if test="cid != null">
+			and cid = #{cid} 
+		</if>
+		<if test="pid != null">
+			and pid = #{pid} 
+		</if>
+		<if test="special != null">
+			and pid != 0 and cname like #{special} 
+		</if>
+		order by orderby
+	</select>
+
+	<!-- 新增全国省份城市区县信息 -->
+	<insert id="insertTWxSysCityinfoByModel" parameterType="TWxSysCityinfo"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into t_wx_sys_cityinfo
+		(cid,cname,pid,pname,orderby,spell,credate)
+		values
+		(#{cid},#{cname},#{pid},#{pname},#{orderby},#{spell},#{credate})
+	</insert>
+
+	<!-- 修改全国省份城市区县信息 -->
+	<update id="updateTWxSysCityinfoByModel" parameterType="TWxSysCityinfo">
+		update t_wx_sys_cityinfo
+		<trim prefix="set" suffixOverrides=",">
+			<if test="cid != null">
+				cid = #{cid}, 
+			</if>
+			<if test="cname != null">
+				cname = #{cname}, 
+			</if>
+			<if test="pid != null">
+				pid = #{pid}, 
+			</if>
+			<if test="pname != null">
+				pname = #{pname}, 
+			</if>
+			<if test="orderby != null">
+				orderby = #{orderby}, 
+			</if>
+			<if test="spell != null">
+				spell = #{spell}, 
+			</if>
+			<if test="credate != null">
+				credate = #{credate} 
+			</if>
+		</trim>
+		where 1 = 1
+		<if test="id != null">
+			and id = #{id} 
+		</if>
+	</update>
+
+	<!-- 删除全国省份城市区县信息 -->
+	<delete id="deleteTWxSysCityinfoByModel" parameterType="TWxSysCityinfo">
+		delete from t_wx_sys_cityinfo
+		where 1 = 1
+		<if test="id != null">
+			and id = #{id} 
+		</if>
+	</delete>
+</mapper>

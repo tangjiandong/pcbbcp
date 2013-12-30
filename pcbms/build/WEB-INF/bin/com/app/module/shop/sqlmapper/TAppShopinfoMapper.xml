@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TAppShopinfo">
+<!-- 添加商户信息-->
+<insert id="insertTAppShopinfoByModel" parameterType="TAppShopinfo" useGeneratedKeys="true" keyProperty="id">
+ insert into t_app_shopinfo (credate,status,address,tel,shopname,ishot) values (#{credate},#{status},#{address},#{tel},#{shopname},#{ishot})
+</insert>
+
+<!-- 修改商户信息-->
+<update id="updateTAppShopinfoByModel" parameterType="TAppShopinfo" > 
+ update   t_app_shopinfo
+  <trim prefix="set" suffixOverrides=",">  
+     <if test="credate != null">
+      credate=#{credate},
+   </if>
+  <if test="status != null">
+      status=#{status},
+   </if>
+  <if test="address != null">
+      address=#{address},
+   </if>
+  <if test="tel != null">
+      tel=#{tel},
+   </if>
+  <if test="shopname != null">
+      shopname=#{shopname},
+   </if>
+  <if test="ishot != null">
+      ishot=#{ishot},
+   </if>
+
+  </trim>  
+ where  1=1  
+  <if test="id != null">  
+   and id = #{id}   
+  </if> 
+</update>
+
+<!-- 查询商户信息-->
+<select id="selectTAppShopinfoByModel" parameterType="TAppShopinfo"  resultType="TAppShopinfo"> 
+ select * from    t_app_shopinfo   where 1=1 
+     <if test="id != null">
+    and id=#{id}
+  </if>
+  <if test="credate != null">
+    and credate=#{credate}
+  </if>
+  <if test="status != null">
+    and status=#{status}
+  </if>
+  <if test="address != null">
+    and address=#{address}
+  </if>
+  <if test="tel != null">
+    and tel=#{tel}
+  </if>
+  <if test="shopname != null">
+    and shopname=#{shopname}
+  </if>
+  <if test="ishot != null">
+    and ishot=#{ishot}
+  </if>
+
+</select>
+
+<!-- 删除商户信息-->
+<delete id="deleteTAppShopinfoByModel" parameterType="TAppShopinfo">
+ delete  from  t_app_shopinfo  where  1=1
+  <if test="id != null">  
+   and id = #{id}   
+  </if> 
+</delete>
+
+<!-- 查询商户信息分页列表-->
+<select id="selectTAppShopinfoByModel_list_page" parameterType="TAppShopinfo"  resultType="TAppShopinfo"> 
+ select * from    t_app_shopinfo   where 1=1 
+     <if test="id != null">
+    and id=#{id}
+  </if>
+  <if test="credate != null">
+    and credate=#{credate}
+  </if>
+  <if test="status != null">
+    and status=#{status}
+  </if>
+  <if test="address != null">
+    and address=#{address}
+  </if>
+  <if test="tel != null">
+    and tel=#{tel}
+  </if>
+  <if test="shopname != null">
+    and shopname=#{shopname}
+  </if>
+  <if test="ishot != null">
+    and ishot=#{ishot}
+  </if>
+
+	limit #{start},#{end} 
+</select>
+<!-- 查询商户信息分页列表统计数量-->
+<select id="selectTAppShopinfoByModel_list_page_count" parameterType="TAppShopinfo"  resultType="Integer"> 
+ select count(1) from    t_app_shopinfo   where 1=1 
+     <if test="id != null">
+    and id=#{id}
+  </if>
+  <if test="credate != null">
+    and credate=#{credate}
+  </if>
+  <if test="status != null">
+    and status=#{status}
+  </if>
+  <if test="address != null">
+    and address=#{address}
+  </if>
+  <if test="tel != null">
+    and tel=#{tel}
+  </if>
+  <if test="shopname != null">
+    and shopname=#{shopname}
+  </if>
+  <if test="ishot != null">
+    and ishot=#{ishot}
+  </if>
+
+</select>
+
+
+
+</mapper>

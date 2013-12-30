@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!--  Overwrite Convention  -->
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<constant name="struts.action.extension" value="do,action,jspx"></constant>
+	<!-- 从这里开始配置添加的自定义struts-*.xml文件 -->
+	<include file="struts-config/struts-base.xml" />
+	<include file="struts-config/common/struts-common.xml" />
+	<include file="struts-config/common/struts-UtilCommon.xml" /> 
+	<include file="struts-config/default/struts-default.xml" />
+	<include file="struts-config/user/struts-user.xml" />
+	<include file="struts-config/sys/struts-sys.xml" />
+	<include file="struts-config/news/struts-new.xml" />
+	
+	<!-- 
+	<include file="struts-config/ulpos/struts-ulpos.xml" />
+	<include file="struts-config/member/struts-member.xml" />
+	<include file="struts-config/notice/struts-notice.xml" />
+	<include file="struts-config/shop/struts-shop.xml" />
+	<include file="struts-config/trade/struts-trade.xml" />
+	<include file="struts-config/robot/struts-robot.xml" />
+	<include file="struts-config/marketing/struts-marketing.xml" />
+	<include file="struts-config/finance/struts-finance.xml" />
+	<include file="struts-config/saleschannel/struts-saleschannel.xml" />
+	 -->
+
+</struts>

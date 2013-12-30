@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TTgSysRolemenuRel">
+	<!-- 查询角色菜单关联信息 -->
+	<select id="selectTTgSysRolemenuRelByModel" parameterType="TTgSysRolemenuRel"
+		resultType="TTgSysRolemenuRel">
+		select * from t_tg_sys_rolemenu_rel where 1 = 1
+		<if test="id != null">
+			and id = #{id} 
+		</if>
+		<if test="roleid != null">
+			and roleid = #{roleid} 
+		</if>
+		<if test="menuid != null">
+			and menuid = #{menuid} 
+		</if>
+	</select>
+
+	<!-- 新增角色菜单关联信息 -->
+	<insert id="insertTTgSysRolemenuRelByModel" parameterType="TTgSysRolemenuRel"
+		useGeneratedKeys="true" keyProperty="userid">
+		insert into t_tg_sys_rolemenu_rel (roleid,menuid,optuserid,optusername,optdate)
+		values (#{roleid},#{menuid},#{optuserid},#{optusername},#{optdate})
+	</insert>
+
+	<!-- 修改角色菜单关联信息 -->
+	<update id="updateTTgSysRolemenuRelByModel" parameterType="TTgSysRolemenuRel">
+		update t_tg_sys_rolemenu_rel
+		<trim prefix="set" suffixOverrides=",">
+			<if test="roleid != null">
+				roleid = #{roleid}, 
+			</if>
+			<if test="menuid != null">
+				menuid = #{menuid}, 
+			</if>
+			<if test="optuserid != null">
+				optuserid = #{optuserid}, 
+			</if>
+			<if test="optusername != null">
+				optusername = #{optusername}, 
+			</if>
+			<if test="optdate != null">
+				optdate = #{optdate}, 
+			</if>
+		</trim>
+		where 1 = 1
+		<if test="id != null">
+			and id = #{id} 
+		</if>
+	</update>
+
+	<!-- 删除角色菜单关联信息 -->
+	<delete id="deleteTTgSysRolemenuRelByModel" parameterType="TTgSysRolemenuRel">
+		delete from t_tg_sys_rolemenu_rel
+		where 1 = 1
+		<if test="id != null">
+			and id = #{id} 
+		</if>
+		<if test="roleid != null">
+			and roleid = #{roleid} 
+		</if>
+	</delete>
+	
+	<!-- 查询不重复的菜单编号信息 -->
+	<select id="selectTTgSysRolemenuRelByModel_distinct" parameterType="TTgSysRolemenuRel"
+		resultType="TTgSysRolemenuRel">
+		select distinct menuid from t_tg_sys_rolemenu_rel where 1 = 1 
+		<if test="speciallist != null">
+			and roleid in
+			<foreach item="item" index="index" collection="speciallist" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</select>
+</mapper>

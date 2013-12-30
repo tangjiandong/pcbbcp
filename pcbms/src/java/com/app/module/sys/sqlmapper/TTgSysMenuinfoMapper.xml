@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TTgSysMenuinfo">
+	<!-- 查询菜单信息 -->
+	<select id="selectTTgSysMenuinfoByModel" parameterType="TTgSysMenuinfo"
+		resultType="TTgSysMenuinfo">
+		select * from t_tg_sys_menuinfo where 1 = 1
+		<if test="mid != null">
+			and mid = #{mid} 
+		</if>
+		<if test="mname != null">
+			and mname = #{mname} 
+		</if>
+		<if test="parentid != null">
+			and parentid = #{parentid} 
+		</if>
+		<if test="isvalid != null">
+			and isvalid = #{isvalid} 
+		</if>
+		<if test="speciallist != null">
+			and mid in
+			<foreach item="item" index="index" collection="speciallist" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		order by msort 
+	</select>
+
+	<!-- 新增菜单信息 -->
+	<insert id="insertTTgSysMenuinfoByModel" parameterType="TTgSysMenuinfo"
+		useGeneratedKeys="true" keyProperty="mid">
+		insert into t_tg_sys_menuinfo (parentid,mname,mdesc,actionurl,msort,isvalid,remark,optuserid,optusername,isleaf,levelno)
+		values (#{parentid},#{mname},#{mdesc},#{actionurl},#{msort},#{isvalid},#{remark},#{optuserid},#{optusername},#{isleaf},#{levelno})
+	</insert>
+
+	<!-- 修改菜单信息 -->
+	<update id="updateTTgSysMenuinfoByModel" parameterType="TTgSysMenuinfo">
+		update t_tg_sys_menuinfo
+		<trim prefix="set" suffixOverrides=",">
+			<if test="parentid != null">
+				parentid = #{parentid}, 
+			</if>
+			<if test="mname != null">
+				mname = #{mname}, 
+			</if>
+			<if test="mdesc != null">
+				mdesc = #{mdesc}, 
+			</if>
+			<if test="actionurl != null">
+				actionurl = #{actionurl}, 
+			</if>
+			<if test="msort != null">
+				msort = #{msort}, 
+			</if>
+			<if test="isvalid != null">
+				isvalid = #{isvalid}, 
+			</if>
+			<if test="remark != null">
+				remark = #{remark}, 
+			</if>
+			<if test="optuserid != null">
+				optuserid = #{optuserid}, 
+			</if>
+			<if test="optusername != null">
+				optusername = #{optusername}, 
+			</if>
+			<if test="isleaf != null">
+				isleaf = #{isleaf}, 
+			</if>
+			<if test="levelno != null">
+				levelno = #{levelno}, 
+			</if>
+		</trim>
+		where 1 = 1
+		<if test="mid != null">
+			and mid = #{mid} 
+		</if>
+		<if test="parentid != null">
+			and parentid = #{parentid} 
+		</if>
+	</update>
+
+	<!-- 删除菜单信息 -->
+	<delete id="deleteTTgSysMenuinfoByModel" parameterType="TTgSysMenuinfo">
+		delete from t_tg_sys_menuinfo
+		where 1 = 1
+		<if test="mid != null">
+			and mid = #{mid} 
+		</if>
+		<if test="parentid != null">
+			and parentid = #{parentid} 
+		</if>
+	</delete>
+	
+	<!-- 查询菜单信息分页列表 -->
+	<select id="selectTTgSysMenuinfo_list_page" parameterType="TTgSysMenuinfo" resultType="java.util.HashMap">
+		select * from t_tg_sys_menuinfo 
+		where 1 = 1 
+		<if test="parentid != null">
+			and parentid = #{parentid} 
+		</if>
+		order by msort  
+		limit #{start},#{end}
+	</select>
+	
+	<select id="selectTTgSysMenuinfo_list_page_count" parameterType="TTgSysMenuinfo" resultType="Integer">
+		select count(*) from t_tg_sys_menuinfo 
+		where 1 = 1 
+		<if test="parentid != null">
+			and parentid = #{parentid} 
+		</if>
+	</select>
+</mapper>

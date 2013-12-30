@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- 用户信息 -->
+		<typeAlias alias="TTgUserinfo" type="com.app.module.user.dto.TTgUserinfo"/>
+		<!-- 系统信息 -->
+		<typeAlias alias="TTgSysRoleinfo" type="com.app.module.sys.dto.TTgSysRoleinfo"/>
+		<typeAlias alias="TTgSysRoleuserRel" type="com.app.module.sys.dto.TTgSysRoleuserRel"/>
+		<typeAlias alias="TTgSysMenuinfo" type="com.app.module.sys.dto.TTgSysMenuinfo"/>
+		<typeAlias alias="TTgSysRolemenuRel" type="com.app.module.sys.dto.TTgSysRolemenuRel"/>
+		<typeAlias alias="TWxSysCityinfo" type="com.app.module.sys.dto.TWxSysCityinfo"/>
+		<!-- 渠道 -->
+		<typeAlias alias="TTgChannelInfo" type="com.app.module.channel.dto.TTgChannelInfo"/>
+		<!-- 新闻 -->
+		<typeAlias alias="TAppNewscenter" type="com.app.module.news.dto.TAppNewscenter"/>
+		<typeAlias alias="TAppWebsiteInfo" type="com.app.module.news.dto.TAppWebsiteInfo"/>
+		<!-- 商户-->
+		<typeAlias alias="TAppShopinfo" type="com.app.module.shop.dto.TAppShopinfo"/>
+	</typeAliases>
+	<mappers>
+		<!-- 用户信息 -->
+		<mapper resource="com/app/module/user/sqlmapper/TTgUserinfoMapper.xml"/>
+		
+		<!-- 系统信息 -->
+		<mapper resource="com/app/module/sys/sqlmapper/TTgSysRoleinfoMapper.xml"/>
+		<mapper resource="com/app/module/sys/sqlmapper/TTgSysRoleuserRelMapper.xml"/>
+		<mapper resource="com/app/module/sys/sqlmapper/TTgSysMenuinfoMapper.xml"/>
+		<mapper resource="com/app/module/sys/sqlmapper/TTgSysRolemenuRelMapper.xml"/>
+		<mapper resource="com/app/module/sys/sqlmapper/TWxSysCityinfoMapper.xml"/>
+		<!-- 渠道 -->
+		<mapper resource="com/app/module/channel/sqlmapper/TTgChannelInfoMapper.xml"/>
+		<!-- 新闻 -->
+		<mapper resource="com/app/module/news/sqlmapper/TAppNewscenterMapper.xml"/>
+		<mapper resource="com/app/module/news/sqlmapper/TAppWebsiteInfoMapper.xml"/>
+		<!-- 商户 -->
+		<mapper resource="com/app/module/shop/sqlmapper/TAppShopinfoMapper.xml"/>
+		
+		
+	
+	</mappers>
+</configuration>
+

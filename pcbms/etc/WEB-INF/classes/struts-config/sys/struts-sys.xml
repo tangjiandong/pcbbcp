@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 需要经过用户登录跳转拦截器 -->
+	<package name="syspackage" namespace="/" extends="app-interceptors">
+		<!-- 菜单信息 -->
+		<action name="menu" class="com.app.transaction.sys.action.MenuAction">
+			<result name="list">/webpages/sys/menuList.jsp</result>
+			<result name="listAjax">/webpages/sys/menuListAjax.jsp</result>
+			<result name="create">/webpages/sys/menuCreate.jsp</result>
+			<result name="edit">/webpages/sys/menuEdit.jsp</result>
+		</action>
+		
+		<!-- 角色信息 -->
+		<action name="role" class="com.app.transaction.sys.action.RoleAction">
+			<result name="list">/webpages/sys/roleList.jsp</result>
+			<result name="create">/webpages/sys/roleCreate.jsp</result>
+			<result name="edit">/webpages/sys/roleEdit.jsp</result>
+			<result name="menu">/webpages/sys/menu.jsp</result>
+		</action>
+		
+	
+	</package>
+</struts>

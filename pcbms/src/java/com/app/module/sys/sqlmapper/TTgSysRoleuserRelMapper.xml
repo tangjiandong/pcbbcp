@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TTgSysRoleuserRel">
+	<!-- 查询角色用户关联信息 -->
+	<select id="selectTTgSysRoleuserRelByModel" parameterType="TTgSysRoleuserRel"
+		resultType="TTgSysRoleuserRel">
+		select * from t_tg_sys_roleuser_rel where 1 = 1
+		<if test="id != null">
+			and id = #{id} 
+		</if>
+		<if test="roleid != null">
+			and roleid = #{roleid} 
+		</if>
+		<if test="userid != null">
+			and userid = #{userid} 
+		</if>
+	</select>
+
+	<!-- 新增角色用户关联信息 -->
+	<insert id="insertTTgSysRoleuserRelByModel" parameterType="TTgSysRoleuserRel"
+		useGeneratedKeys="true" keyProperty="userid">
+		insert into t_tg_sys_roleuser_rel (roleid,userid,optuserid,optusername,optdate)
+		values (#{roleid},#{userid},#{optuserid},#{optusername},#{optdate})
+	</insert>
+
+	<!-- 修改角色用户关联信息 -->
+	<update id="updateTTgSysRoleuserRelByModel" parameterType="TTgSysRoleuserRel">
+		update t_tg_sys_roleuser_rel
+		<trim prefix="set" suffixOverrides=",">
+			<if test="roleid != null">
+				roleid = #{roleid}, 
+			</if>
+			<if test="userid != null">
+				userid = #{userid}, 
+			</if>
+			<if test="optuserid != null">
+				optuserid = #{optuserid}, 
+			</if>
+			<if test="optusername != null">
+				optusername = #{optusername}, 
+			</if>
+			<if test="optdate != null">
+				optdate = #{optdate}, 
+			</if>
+		</trim>
+		where 1 = 1
+		<if test="id != null">
+			and id = #{id} 
+		</if>
+	</update>
+
+	<!-- 删除角色用户关联信息 -->
+	<delete id="deleteTTgSysRoleuserRelByModel" parameterType="TTgSysRoleuserRel">
+		delete from t_tg_sys_roleuser_rel
+		where 1 = 1
+		<if test="id != null">
+			and id = #{id} 
+		</if>
+		<if test="userid != null">
+			and userid = #{userid} 
+		</if>
+	</delete>
+</mapper>

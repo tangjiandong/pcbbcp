@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 需要经过拦截器 -->
+	<package name="app-interceptors" extends="struts-default">
+		<interceptors>
+			<!-- 用户登录跳转拦截器 -->
+			<interceptor name="loginOfApp" class="com.app.common.interceptor.UserLoginInterceptor" />
+			<interceptor-stack name="loginOfAppStack">
+				<interceptor-ref name="loginOfApp" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="loginOfAppStack"></default-interceptor-ref>
+		<default-action-ref name="index" />
+		<global-results>
+			<result name="loginTimeOut">/webpages/user/login.jsp</result>
+			<result name="error">/webpages/common/error.jsp</result>
+			<result name="ajax">/webpages/common/resultAjax.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+	</package>
+	
+	<!-- 不需要经过拦截器 -->
+	<package name="app-interceptors-not" extends="struts-default">
+		<default-action-ref name="index" />
+		<global-results>
+			<result name="error">/webpages/common/error.jsp</result>
+			<result name="ajax">/webpages/common/resultAjax.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+	</package>
+	
+
+</struts>
