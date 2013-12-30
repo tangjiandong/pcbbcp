@@ -10,6 +10,8 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
+
+测试
 Date: 2013-12-24 17:52:04
 */
 
